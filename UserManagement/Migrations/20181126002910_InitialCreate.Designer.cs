@@ -9,7 +9,7 @@ using UserManagement.Data;
 namespace UserManagement.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181125200524_InitialCreate")]
+    [Migration("20181126002910_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

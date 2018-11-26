@@ -49,10 +49,12 @@ namespace UserManagement
             // These are the claims/permissions for user authorization
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("Users-Create", policy => policy.RequireClaim("Users-View"));
                 options.AddPolicy("Users-View", policy => policy.RequireClaim("Users-View"));
-                options.AddPolicy("Users-Edit", policy => policy.RequireClaim("Users-Edit"));
                 options.AddPolicy("Users-Details", policy => policy.RequireClaim("Users-Details"));
+                options.AddPolicy("Users-Edit", policy => policy.RequireClaim("Users-Edit"));
                 options.AddPolicy("Users-Delete", policy => policy.RequireClaim("Users-Delete"));
+                options.AddPolicy("Roles-Create", policy => policy.RequireClaim("Roles-View"));
                 options.AddPolicy("Roles-View", policy => policy.RequireClaim("Roles-View"));
                 options.AddPolicy("Roles-Details", policy => policy.RequireClaim("Roles-Details"));
                 options.AddPolicy("Roles-Edit", policy => policy.RequireClaim("Roles-Edit"));

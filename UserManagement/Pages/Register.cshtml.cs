@@ -70,7 +70,7 @@ namespace UserManagement.Pages
                 return Page();
             }
 
-            var user = new User { UserName = Input.Email, Email = Input.Email };
+            var user = new User { UserName = Input.Email, Email = Input.Email, Enabled = true};
             var result = await _userManager.CreateAsync(user, Input.Password);
             if (result.Succeeded)
             {
