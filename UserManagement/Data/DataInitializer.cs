@@ -28,10 +28,15 @@ namespace UserManagement.Data
         public static async void SeedRoleClaimsAsync(RoleManager<Role> roleManager)
         {
             var role = await roleManager.FindByNameAsync("Administrator");
+            var roleClaims = await roleManager.GetClaimsAsync(role);
 
-            foreach (var claim in AllClaims.GetList())
+            foreach (var claimString in AllClaims.GetList())
             {
-                await roleManager.AddClaimAsync(role, new Claim(claim, ""));
+                var newClaim = new Claim(claimString, "");
+                if (!roleClaims.Any(rc => rc.Type.ToString() == claimString))
+                {
+                    await roleManager.AddClaimAsync(role, newClaim);
+                }
             }
         }
 
